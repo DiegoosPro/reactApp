@@ -1,8 +1,9 @@
-import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { usePokemonPaginated } from "../hooks/usePokemonPaginated";
 import { globalStyles } from '../theme/appTheme';
 import { PokemonCard } from "../components/PokemonCard";
+import { PokeballLoading } from "../components/PokeballLoading";
 
 export const HomeScreen = () => {
     //si se encuantra instalado react native navigation react-native-screens react native safe area context
@@ -29,6 +30,7 @@ export const HomeScreen = () => {
                                 ...globalStyles.title,
                                 ...globalStyles.globalMargin,
                                 top: top + 20,
+                                marginBottom: 10,
                                 paddingBottom: 10
                             }}>
                             Pokedex
@@ -39,10 +41,11 @@ export const HomeScreen = () => {
                     onEndReached={loadPokemons}
                     onEndReachedThreshold={0.4}
                     ListFooterComponent={(
-                        <ActivityIndicator
-                            style={{ height: 100 }}
-                            size={20}
-                            color={'gray'} />
+                        // <ActivityIndicator
+                        //     style={{ height: 100 }}
+                        //     size={20}
+                        //     color={'gray'} />
+                        <PokeballLoading/>
                     )}
                 />
             </View>
